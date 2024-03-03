@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package control;
+
+option go_package = "./service-go";
+
+// The control message contains a command name and some arguments.
+message ControlMessage {
+  string command_name = 1;
+  repeated string args = 2;
+}
+
+// The ControlService provides a bidirectional streaming RPC.
+service ControlService {
+  // StreamControl allows sending and receiving ControlMessages.
+  rpc StreamControl(stream ControlMessage) returns (stream ControlMessage);
+}
