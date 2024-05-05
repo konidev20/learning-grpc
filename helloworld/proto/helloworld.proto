@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "helloworld/proto";
+
+package helloworld;
+
+service Pinger {
+    rpc Ping(PingRequest) returns (PingReply) {}
+}
+
+message PingRequest {
+    string name = 1;
+}
+
+message PingReply {
+    string message = 1;
+}
